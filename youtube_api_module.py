@@ -54,7 +54,7 @@ def get_videos():
 
     # CSV 파일로 저장
     with open('Resources/videos.csv', 'w',encoding='utf-8', newline='') as csvfile:
-        csv_writer = csv.writer(csvfile,quoting=csv.QUOTE_NONE, escapechar='\\')
+        csv_writer = csv.writer(csvfile) # (csvfile,quoting=csv.QUOTE_NONE, escapechar='\\')
         csv_writer.writerow(['Video ID','Title', 'URL', 'Thumbnail URL'])
         csv_writer.writerows(videos)
 
