@@ -32,7 +32,7 @@
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
-                    const cells = lines[i].split(',');
+                    const cells = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // 쉼표 안의 쌍따옴표는 무시 //split(',');
                     if (cells.length === 4) {
                         const [video_id,title, url, thumbnail] = cells;
                         const row = `
