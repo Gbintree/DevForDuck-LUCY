@@ -97,7 +97,7 @@
         fetch(csvFileURL)
             .then(response => response.text())
             .then(data => {
-                const tableBody = document.querySelector('#data-table tbody');
+                const carousel = document.getElementById('carousel');
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
@@ -105,26 +105,26 @@
                     if (cells.length === 4) {
                         const [video_id,title, url, thumbnail] = cells;
                     
-                    // 동적으로 캐러셀 카드 생성
-                    const movieCard = document.createElement('div');
-                    movieCard.classList.add('movie-card');
+                        // 동적으로 캐러셀 카드 생성
+                        const movieCard = document.createElement('div');
+                        movieCard.classList.add('movie-card');
 
-                    const link = document.createElement('a');
-                    link.href = url;
-                    link.target = '_blank';
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.target = '_blank';
 
-                    const img = document.createElement('img');
-                    img.src = thumbnail;
-                    img.alt = title;
+                        const img = document.createElement('img');
+                        img.src = thumbnail;
+                        img.alt = title;
 
-                    const h2 = document.createElement('h2');
-                    h2.textContent = title;
+                        const h2 = document.createElement('h2');
+                        h2.textContent = title;
 
-                    link.appendChild(img);
-                    movieCard.appendChild(link);
-                    movieCard.appendChild(h2);
-                    
-                    carousel.appendChild(movieCard);
+                        link.appendChild(img);
+                        movieCard.appendChild(link);
+                        movieCard.appendChild(h2);
+                        
+                        carousel.appendChild(movieCard);
                     }
                 }
             })
