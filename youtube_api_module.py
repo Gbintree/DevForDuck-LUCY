@@ -49,7 +49,7 @@ def get_videos():
 
         thumbnail_filename = f'{video_id}.png' # f'Resources/Images/{video_id}.png'
 
-        save_img_from_url(thumbnail_filename,thumbnail_url)
+        # save_img_from_url(thumbnail_filename,thumbnail_url)
 
 
     # CSV 파일로 저장
