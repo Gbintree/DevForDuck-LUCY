@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV Data Display</title>
+</head>
+<body>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Video ID</th>
+                <th>Video TITLE</th>
+                <th>Video URL</th>
+                <th>Thumbnail </th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- CSV 데이터가 여기에 동적으로 추가됩니다. -->
+        </tbody>
+    </table>
+
+    <script>
+        // CSV 파일 URL
+        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/videos.csv';
+
+        // CSV 데이터를 가져오고 파싱하여 테이블에 추가
+        fetch(csvFileURL)
+            .then(response => response.text())
+            .then(data => {
+                const tableBody = document.querySelector('#data-table tbody');
+                const lines = data.split('\n');
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const cells = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // 쉼표 안의 쌍따옴표는 무시 //split(',');
+                    if (cells.length === 4) {
+                        const [video_id,title, url, thumbnail] = cells;
+                        const row = `
+                            <tr>
+                                <td>${video_id}</td>
+                                <td>${title}</td>
+                                <td><a href="${url}" target="_blank">Watch</a></td>
+                                <td><img src="https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Images/${video_id}.png" alt="Thumbnail"></td>
+                            </tr>
+                        `;
+                        tableBody.innerHTML += row;
+                    }
+                }
+            })
+            .catch(error => console.error('Error fetching CSV:', error));
+    </script>
+</body>
+</html>
