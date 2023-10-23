@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix-style Carousel</title>
+    <title>DevForDuck-LUCY </title>
     <style>
     body {
         margin: 0;
@@ -92,6 +92,12 @@
 
         // CSV 파일 URL
         const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/videos.csv';
+        
+        const carouselStyle = document.querySelector('.carousel');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+
+        let movieCards = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
         fetch(csvFileURL)
@@ -127,21 +133,19 @@
                         carousel.appendChild(movieCard);
                     }
                 }
+            
+                movieCards = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                console.log(movieCards.length);
             })
             .catch(error => console.error('Error fetching CSV:', error));
 
-
-        const carousel = document.querySelector('.carousel');
-        const movieCards = document.querySelectorAll('.movie-card');
-        const prevButton = document.querySelector('.prev-button');
-        const nextButton = document.querySelector('.next-button');
-
         let currentIndex = 0;
+
         const cardWidth = 320; // Adjust to match card width
 
         function showMovie(index) {
             const offset = -index * cardWidth;
-            carousel.style.transform = `translateX(${offset}px)`;
+            carouselStyle.style.transform = `translateX(${offset}px)`;
         }
 
         function nextMovie() {
@@ -160,6 +164,10 @@
 
         // Show the initial movie
         showMovie(currentIndex);
+
+
+        
+
     </script>
 </body>
 </html>
