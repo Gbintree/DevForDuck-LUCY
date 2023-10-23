@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEBUG </title>
+    <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .carousel-container {
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.3s ease;
+    }
+
+    .movie-card {
+        flex: 0 0 300px;
+        margin-right: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #333;
+        text-align: center;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+    .movie-card img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .movie-card h2 {
+        padding: 10px;
+        text-align: center;
+        margin: 0;
+        background-color: #222;
+        color: #fff;
+        font-size: 16px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    .prev-button,
+    .next-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+
+    .prev-button {
+        left: 0;
+    }
+
+    .next-button {
+        right: 0;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    </style>    
+
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button">Previous</button>
+        <button class="next-button">Next</button>
+    </div>
+    <script >
+
+        // CSV 파일 URL
+        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/videos.csv';
+        
+        const carouselStyle = document.querySelector('.carousel');
+        const prevButton = document.querySelector('.prev-button');
+        const nextButton = document.querySelector('.next-button');
+
+        let movieCards = [];// = document.querySelectorAll('.movie-card');
+
+        // CSV 데이터를 가져오고 파싱하여 테이블에 추가
+        fetch(csvFileURL)
+            .then(response => response.text())
+            .then(data => {
+                const carousel = document.getElementById('carousel');
+                const lines = data.split('\n');
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const cells = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // 쉼표 안의 쌍따옴표는 무시 //split(',');
+                    if (cells.length === 4) {
+                        const [video_id,title, url, thumbnail] = cells;
+                    
+                        // 동적으로 캐러셀 카드 생성
+                        const movieCard = document.createElement('div');
+                        movieCard.classList.add('movie-card');
+
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.target = '_blank';
+
+                        const img = document.createElement('img');
+                        img.src = thumbnail;
+                        img.alt = title;
+
+                        const h2 = document.createElement('h2');
+                        h2.textContent = title;
+
+                        link.appendChild(img);
+                        movieCard.appendChild(link);
+                        movieCard.appendChild(h2);
+                        
+                        carousel.appendChild(movieCard);
+                    }
+                }
+            
+                movieCards = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                console.log(movieCards.length);
+            })
+            .catch(error => console.error('Error fetching CSV:', error));
+
+        let currentIndex = 3;
+
+        const cardWidth = 320; // Adjust to match card width
+
+        function showMovie(index) {
+            const offset = -index * cardWidth;
+            carouselStyle.style.transform = `translateX(${offset}px)`;
+        }
+
+        function nextMovie() {
+            currentIndex = (currentIndex + 1) % movieCards.length;
+            showMovie(currentIndex);
+            console.log(currentIndex);
+            // window.alert(this.innerHTML); // click 이벤트 발생하는지 디버그하기 위함
+        }
+
+        function prevMovie() {
+            currentIndex = (currentIndex - 1 + movieCards.length) % movieCards.length;
+            showMovie(currentIndex);
+            console.log(currentIndex);
+        }
+
+        // Add event listeners for next and previous buttons
+        nextButton.addEventListener('click', nextMovie);
+        prevButton.addEventListener('click', prevMovie);
+
+        // Show the initial movie
+        showMovie(currentIndex);
+
+
+        
+
+    </script>
+</body>
+</html>
