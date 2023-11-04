@@ -28,7 +28,8 @@ def save_img_from_url(local_filename,url):
 
 def get_videos():
     search_keyword = input("Enter Search Keyword: ")
-    max_results = 10
+    folder_name = input("Enter Folder Name: ")
+    max_results = 20
 
     search_response = youtube.search().list(
         q=search_keyword,
@@ -51,9 +52,10 @@ def get_videos():
 
         # save_img_from_url(thumbnail_filename,thumbnail_url)
 
+    
 
     # CSV 파일로 저장
-    with open('Resources/videos.csv', 'w',encoding='utf-8', newline='') as csvfile:
+    with open(f'Resources/{folder_name}/videos.csv', 'w',encoding='utf-8', newline='') as csvfile:
         csv_writer = csv.writer(csvfile) # (csvfile,quoting=csv.QUOTE_NONE, escapechar='\\')
         csv_writer.writerow(['Video ID','Title', 'URL', 'Thumbnail URL'])
         csv_writer.writerows(videos)
