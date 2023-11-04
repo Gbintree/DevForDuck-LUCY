@@ -81,22 +81,22 @@
 
 </head>
 <body>
-    <div class="carousel-container">
-        <div class="carousel" id="carousel_00">
+    <div class="carousel-container" id="carousel_00">
+        <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
         <button class="prev-button">Previous</button>
         <button class="next-button">Next</button>
     </div>
-    <div class="carousel-container">
-        <div class="carousel" id="carousel_01">
+    <div class="carousel-container" id="carousel_01">
+        <div class="carousel">
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
         <button class="prev-button">Previous</button>
         <button class="next-button">Next</button>
     </div>
-    <div class="carousel-container">
-        <div class="carousel" id="carousel_02">
+    <div class="carousel-container" id="carousel_02">
+        <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
         <button class="prev-button">Previous</button>
@@ -142,7 +142,7 @@
             fetch(csv_path)
             .then(response => response.text())
             .then(data => {
-                const carousel = document.getElementById(carouselID);
+                const carousel = document.querySelector(`#${carouselID} .carousel`);//document.getElementById(carouselID);
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
@@ -187,7 +187,7 @@
             
                 function showMovie(index) {
                     const offset = -index * cardWidth;
-                    const carousel = document.getElementById(carouselID);
+                    // const carousel = document.getElementById(carouselID);
                     carousel.style.transform = `translateX(${offset}px)`;
                 }
  
