@@ -114,18 +114,20 @@
         const prevButton = document.querySelector('.prev-button');
         const nextButton = document.querySelector('.next-button');
 
-        let movieCards = [];
+        let movieCards_00 = [];
+        let movieCards_01 = [];
+        let movieCards_02 = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
-        updateCarousel(csvFileURL_00,'carousel_00')
-        updateCarousel(csvFileURL_01,'carousel_01')
-        updateCarousel(csvFileURL_02,'carousel_02')
+        updateCarousel(csvFileURL_00,'carousel_00', '00')
+        updateCarousel(csvFileURL_01,'carousel_01', '01')
+        updateCarousel(csvFileURL_02,'carousel_02', '02')
 
-        let currentIndex = 3;
+        let currentIndex = 0;
 
         const cardWidth = 320; // Adjust to match card width
 
-        function updateCarousel(csv_path, carouselID){
+        function updateCarousel(csv_path, carouselID, movieCardSetID){
             fetch(csv_path)
             .then(response => response.text())
             .then(data => {
@@ -159,9 +161,17 @@
                         carousel.appendChild(movieCard);
                     }
                 }
+
+                if(movieCardSetID=='00'){
+                    movieCards_00 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                }else if(movieCardSetID=='01'){
+                    movieCards_01 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                }else if(movieCardSetID=='02'){
+                    movieCards_02 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                }
             
-                movieCards = document.querySelectorAll('.movie-card'); // 요소 업데이트
-                console.log(movieCards.length);
+                // movie_cards = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                // console.log(movie_cards.length);
             })
             .catch(error => console.error('Error fetching CSV:', error));
         }
@@ -172,14 +182,14 @@
         }
 
         function nextMovie() {
-            currentIndex = (currentIndex + 1) % movieCards.length;
+            currentIndex = (currentIndex + 1) % movieCards_00.length;
             showMovie(currentIndex);
             console.log(currentIndex);
             // window.alert(this.innerHTML); // click 이벤트 발생하는지 디버그하기 위함
         }
 
         function prevMovie() {
-            currentIndex = (currentIndex - 1 + movieCards.length) % movieCards.length;
+            currentIndex = (currentIndex - 1 + movieCards_00.length) % movieCards_00.length;
             showMovie(currentIndex);
             console.log(currentIndex);
         }
