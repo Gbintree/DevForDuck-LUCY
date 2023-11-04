@@ -82,7 +82,7 @@
 </head>
 <body>
     <div class="carousel-container">
-        <div class="carousel" id="carousel">
+        <div class="carousel" id="carousel_00">
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
         <button class="prev-button">Previous</button>
@@ -91,19 +91,26 @@
     <script >
 
         // CSV 파일 URL
-        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/videos.csv';
+        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/GMF2023/videos.csv';
         
         const carouselStyle = document.querySelector('.carousel');
         const prevButton = document.querySelector('.prev-button');
         const nextButton = document.querySelector('.next-button');
 
-        let movieCards = [];// = document.querySelectorAll('.movie-card');
+        let movieCards = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
-        fetch(csvFileURL)
+        updateCarousel(csvFileURL)
+
+        let currentIndex = 3;
+
+        const cardWidth = 320; // Adjust to match card width
+
+        function updateCarousel(csv_path){
+            fetch(csv_path)
             .then(response => response.text())
             .then(data => {
-                const carousel = document.getElementById('carousel');
+                const carousel = document.getElementById('carousel_00');
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
@@ -138,10 +145,7 @@
                 console.log(movieCards.length);
             })
             .catch(error => console.error('Error fetching CSV:', error));
-
-        let currentIndex = 3;
-
-        const cardWidth = 320; // Adjust to match card width
+        }
 
         function showMovie(index) {
             const offset = -index * cardWidth;
