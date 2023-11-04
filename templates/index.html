@@ -88,11 +88,28 @@
         <button class="prev-button">Previous</button>
         <button class="next-button">Next</button>
     </div>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel_01">
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button">Previous</button>
+        <button class="next-button">Next</button>
+    </div>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel_02">
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button">Previous</button>
+        <button class="next-button">Next</button>
+    </div>
     <script >
 
         // CSV 파일 URL
-        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/GMF2023/videos.csv';
-        
+        const csvFileURL_00 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/GMF2023/videos.csv';
+        const csvFileURL_01 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230820/videos.csv';
+        const csvFileURL_02 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230819/videos.csv';
+
+
         const carouselStyle = document.querySelector('.carousel');
         const prevButton = document.querySelector('.prev-button');
         const nextButton = document.querySelector('.next-button');
@@ -100,17 +117,19 @@
         let movieCards = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
-        updateCarousel(csvFileURL)
+        updateCarousel(csvFileURL_00,'carousel_00')
+        updateCarousel(csvFileURL_01,'carousel_01')
+        updateCarousel(csvFileURL_02,'carousel_02')
 
         let currentIndex = 3;
 
         const cardWidth = 320; // Adjust to match card width
 
-        function updateCarousel(csv_path){
+        function updateCarousel(csv_path, carouselID){
             fetch(csv_path)
             .then(response => response.text())
             .then(data => {
-                const carousel = document.getElementById('carousel_00');
+                const carousel = document.getElementById(carouselID);
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
