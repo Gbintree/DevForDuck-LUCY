@@ -52,11 +52,12 @@
         border-bottom-left-radius: 5px;
         border-bottom-right-radius: 5px; */
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         background: rgba(0, 0, 0, 0.5);
         color: #fff;
         padding: 10px;
+        font-size: 16px;
         margin: 0;
         display: none;
         z-index: 1; /* 썸네일 위에 표시하기 위한 z-index 설정 */
@@ -74,47 +75,33 @@
     .prev-button,
     .next-button {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        /* top: 10%; */
+        bottom: 0px;
+        /* transform: translateY(-50%); */
         background-color: transparent;
         color: #fff;
         padding: 10px 20px;
-        border: 2px solid #fff;
+        /* border: 2px solid #fff; */
         cursor: pointer;
-        border-radius: 5px;
+        /* border-radius: 5px; */
         transition: background-color 0.3s, color 0.3s;
+        height: 80%;
+        width: 10px
     }
 
     .prev-button:hover,
     .next-button:hover {
-        background-color: #fff;
+        background-color: #ffffff6c;
         color: #000;
     }
 
-    /* .prev-button,
-    .next-button {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-    }
- */
+
     .prev-button {
         left: 0;
     }
 
     .next-button {
         right: 0;
-    }
-
-    .prev-button:hover,
-    .next-button:hover {
-        background-color: rgba(0, 0, 0, 0.8);
     }
 
     </style>    
@@ -126,24 +113,24 @@
         <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
-        <button class="prev-button">Previous</button>
-        <button class="next-button">Next</button>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
     </div>
     <div class="carousel-container" id="carousel_01">
         <h2 class="carousel-title">열,다섯 콘서트 230820</h2>
         <div class="carousel">
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
-        <button class="prev-button">Previous</button>
-        <button class="next-button">Next</button>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
     </div>
     <div class="carousel-container" id="carousel_02">
         <h2 class="carousel-title">열,다섯 콘서트 230819</h2>
         <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
-        <button class="prev-button">Previous</button>
-        <button class="next-button">Next</button>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
     </div>
     <script >
 
