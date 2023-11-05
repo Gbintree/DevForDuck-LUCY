@@ -174,20 +174,19 @@
                 }
 
                 if(movieCardSetID=='00'){
-                    movieCards_00 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                    movieCards_00 = document.querySelectorAll(`#${carouselID} .movie-card`); 
                     movieCardsLength[carouselID] = movieCards_00.length;
                 }else if(movieCardSetID=='01'){
-                    movieCards_01 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                    movieCards_01 = document.querySelectorAll(`#${carouselID} .movie-card`); 
                     movieCardsLength[carouselID] = movieCards_01.length;
                 }else if(movieCardSetID=='02'){
-                    movieCards_02 = document.querySelectorAll('.movie-card'); // 요소 업데이트
+                    movieCards_02 = document.querySelectorAll(`#${carouselID} .movie-card`);
                     movieCardsLength[carouselID] = movieCards_02.length;
                 }
 
             
                 function showMovie(index) {
                     const offset = -index * cardWidth;
-                    // const carousel = document.getElementById(carouselID);
                     carousel.style.transform = `translateX(${offset}px)`;
                 }
  
