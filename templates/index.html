@@ -51,7 +51,36 @@
         border-bottom-right-radius: 5px;
     }
 
+    .movie-card h2 {
+        display: none; /* 비디오 제목 숨기기 */
+    }
+
+    /* 마우스 호버 시 비디오 제목 표시 */
+    .movie-card:hover h2 {
+        display: block;
+    }
+
     .prev-button,
+    .next-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        color: #fff;
+        padding: 10px 20px;
+        border: 2px solid #fff;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        background-color: #fff;
+        color: #000;
+    }
+
+    /* .prev-button,
     .next-button {
         position: absolute;
         top: 50%;
@@ -63,7 +92,7 @@
         cursor: pointer;
         border-radius: 5px;
     }
-
+ */
     .prev-button {
         left: 0;
     }
