@@ -26,6 +26,7 @@
     }
 
     .movie-card {
+        position: relative;
         flex: 0 0 300px;
         margin-right: 20px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -38,31 +39,62 @@
     .movie-card img {
         max-width: 100%;
         height: auto;
+        display: block;
     }
 
     .movie-card h2 {
-        padding: 10px;
+        /* padding: 10px;
         text-align: center;
         margin: 0;
         background-color: #222;
         color: #fff;
         font-size: 16px;
         border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
+        border-bottom-right-radius: 5px; */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        margin: 0;
+        display: none;
+        z-index: 1; /* 썸네일 위에 표시하기 위한 z-index 설정 */
+    }
+
+    .movie-card h2 {
+        display: none; /* 비디오 제목 숨기기 */
+    }
+
+    /* 마우스 호버 시 비디오 제목 표시 */
+    .movie-card:hover h2 {
+        display: block;
     }
 
     .prev-button,
     .next-button {
         position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: rgba(0, 0, 0, 0.5);
+        /* top: 10%; */
+        bottom: 0px;
+        /* transform: translateY(-50%); */
+        background-color: transparent;
         color: #fff;
         padding: 10px 20px;
-        border: none;
+        /* border: 2px solid #fff; */
         cursor: pointer;
-        border-radius: 5px;
+        /* border-radius: 5px; */
+        transition: background-color 0.3s, color 0.3s;
+        height: 80%;
+        width: 10px
     }
+
+    .prev-button:hover,
+    .next-button:hover {
+        background-color: #ffffff6c;
+        color: #000;
+    }
+
 
     .prev-button {
         left: 0;
@@ -72,38 +104,75 @@
         right: 0;
     }
 
-    .prev-button:hover,
-    .next-button:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
-
     </style>    
 
 </head>
 <body>
-    <div class="carousel-container">
-        <div class="carousel" id="carousel">
+    <div class="carousel-container" id="carousel_00">
+        <h2 class="carousel-title">GMF2023 LUCY</h2>
+        <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
-        <button class="prev-button">Previous</button>
-        <button class="next-button">Next</button>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
+    <div class="carousel-container" id="carousel_01">
+        <h2 class="carousel-title">열,다섯 콘서트 230820</h2>
+        <div class="carousel">
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
+    <div class="carousel-container" id="carousel_02">
+        <h2 class="carousel-title">열,다섯 콘서트 230819</h2>
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
     </div>
     <script >
 
         // CSV 파일 URL
-        const csvFileURL = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/GMF2023/videos.csv';
-        
-        const carouselStyle = document.querySelector('.carousel');
-        const prevButton = document.querySelector('.prev-button');
-        const nextButton = document.querySelector('.next-button');
+        const csvFileURL_00 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/GMF2023/videos.csv';
+        const csvFileURL_01 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230820/videos.csv';
+        const csvFileURL_02 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230819/videos.csv';
 
-        let movieCards = [];// = document.querySelectorAll('.movie-card');
+
+        // const carouselStyle = document.querySelector('.carousel');
+        // const prevButton = document.querySelector('.prev-button');
+        // const nextButton = document.querySelector('.next-button');
+
+        let movieCards_00 = [];
+        let movieCards_01 = [];
+        let movieCards_02 = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
-        fetch(csvFileURL)
+        updateCarousel(csvFileURL_00,'carousel_00', '00')
+        updateCarousel(csvFileURL_01,'carousel_01', '01')
+        updateCarousel(csvFileURL_02,'carousel_02', '02')
+
+        // let currentIndex = 0;
+        const currentIndex = {
+            carousel_00: 0,
+            carousel_01: 0,
+            carousel_02: 0
+        };
+
+        const movieCardsLength = {
+            carousel_00: 0,
+            carousel_01: 0,
+            carousel_02: 0
+        };
+
+        const cardWidth = 320; // Adjust to match card width
+
+        function updateCarousel(csv_path, carouselID, movieCardSetID){
+            fetch(csv_path)
             .then(response => response.text())
             .then(data => {
-                const carousel = document.getElementById('carousel');
+                const carousel = document.querySelector(`#${carouselID} .carousel`);//document.getElementById(carouselID);
                 const lines = data.split('\n');
                 
                 for (let i = 1; i < lines.length; i++) {
@@ -133,40 +202,76 @@
                         carousel.appendChild(movieCard);
                     }
                 }
+
+                if(movieCardSetID=='00'){
+                    movieCards_00 = document.querySelectorAll(`#${carouselID} .movie-card`); 
+                    movieCardsLength[carouselID] = movieCards_00.length;
+                }else if(movieCardSetID=='01'){
+                    movieCards_01 = document.querySelectorAll(`#${carouselID} .movie-card`); 
+                    movieCardsLength[carouselID] = movieCards_01.length;
+                }else if(movieCardSetID=='02'){
+                    movieCards_02 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_02.length;
+                }
+
             
-                movieCards = document.querySelectorAll('.movie-card'); // 요소 업데이트
-                console.log(movieCards.length);
+                function showMovie(index) {
+                    const offset = -index * cardWidth;
+                    carousel.style.transform = `translateX(${offset}px)`;
+                }
+ 
+                function nextMovie() {
+                    currentIndex[carouselID] = (currentIndex[carouselID] + 1) % movieCardsLength[carouselID];
+                    showMovie(currentIndex[carouselID]);
+                    console.log(currentIndex[carouselID]);
+                }
+
+                function prevMovie() {
+                    currentIndex[carouselID] = (currentIndex[carouselID] - 1 + movieCardsLength[carouselID]) % movieCardsLength[carouselID];
+                    showMovie(currentIndex[carouselID]);
+                    console.log(currentIndex[carouselID]);
+                }
+
+                // Add event listeners for next and previous buttons specific to this carousel
+                const prevButton = document.querySelector(`#${carouselID} .prev-button`);
+                const nextButton = document.querySelector(`#${carouselID} .next-button`);
+                nextButton.addEventListener('click', nextMovie);
+                prevButton.addEventListener('click', prevMovie);
+
+                showMovie(currentIndex[carouselID]);
+                
             })
             .catch(error => console.error('Error fetching CSV:', error));
 
-        let currentIndex = 3;
-
-        const cardWidth = 320; // Adjust to match card width
-
-        function showMovie(index) {
-            const offset = -index * cardWidth;
-            carouselStyle.style.transform = `translateX(${offset}px)`;
+            
         }
 
-        function nextMovie() {
-            currentIndex = (currentIndex + 1) % movieCards.length;
-            showMovie(currentIndex);
-            console.log(currentIndex);
-            // window.alert(this.innerHTML); // click 이벤트 발생하는지 디버그하기 위함
-        }
+        // function showMovie(index) {
+        //     const offset = -index * cardWidth;
+        //     carouselStyle.style.transform = `translateX(${offset}px)`;
+        // }
 
-        function prevMovie() {
-            currentIndex = (currentIndex - 1 + movieCards.length) % movieCards.length;
-            showMovie(currentIndex);
-            console.log(currentIndex);
-        }
+
+
+        // function nextMovie() {
+        //     currentIndex = (currentIndex + 1) % movieCards_00.length;
+        //     showMovie(currentIndex);
+        //     console.log(currentIndex);
+        //     // window.alert(this.innerHTML); // click 이벤트 발생하는지 디버그하기 위함
+        // }
+
+        // function prevMovie() {
+        //     currentIndex = (currentIndex - 1 + movieCards_00.length) % movieCards_00.length;
+        //     showMovie(currentIndex);
+        //     console.log(currentIndex);
+        // }
 
         // Add event listeners for next and previous buttons
-        nextButton.addEventListener('click', nextMovie);
-        prevButton.addEventListener('click', prevMovie);
+        // nextButton.addEventListener('click', nextMovie);
+        // prevButton.addEventListener('click', prevMovie);
 
         // Show the initial movie
-        showMovie(currentIndex);
+        // showMovie(currentIndex);
 
 
         
