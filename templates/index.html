@@ -133,7 +133,15 @@
         <button class="next-button">&#9654;</button>
     </div>
     <div class="carousel-container" id="carousel_03">
-        <h2 class="carousel-title">2023 LUCY 연말결산</h2>
+        <h2 class="carousel-title">루미너스 부산 230618</h2>
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
+    <div class="carousel-container" id="carousel_04">
+        <h2 class="carousel-title">루미너스 부산 230617</h2>
         <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
@@ -147,31 +155,37 @@
         const csvFileURL_01 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230820/videos.csv';
         const csvFileURL_02 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230819/videos.csv';
         const csvFileURL_03 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/LUMINOUS_230618/videos.csv';
+        const csvFileURL_04 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/LUMINOUS_230617/videos.csv';
+
 
         let movieCards_00 = [];
         let movieCards_01 = [];
         let movieCards_02 = [];
         let movieCards_03 = [];
+        let movieCards_04 = [];
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
         updateCarousel(csvFileURL_00,'carousel_00', '00')
         updateCarousel(csvFileURL_01,'carousel_01', '01')
         updateCarousel(csvFileURL_02,'carousel_02', '02')
         updateCarousel(csvFileURL_03,'carousel_03', '03')
+        updateCarousel(csvFileURL_04,'carousel_04', '04')
 
         // let currentIndex = 0;
         const currentIndex = {
             carousel_00: 0,
             carousel_01: 0,
             carousel_02: 0,
-            carousel_03: 0
+            carousel_03: 0,
+            carousel_04: 0
         };
 
         const movieCardsLength = {
             carousel_00: 0,
             carousel_01: 0,
             carousel_02: 0,
-            carousel_03: 0
+            carousel_03: 0,
+            carousel_04: 0
         };
 
         const cardWidth = 320; // Adjust to match card width
@@ -224,6 +238,9 @@
                 else if(movieCardSetID=='03'){
                     movieCards_03 = document.querySelectorAll(`#${carouselID} .movie-card`);
                     movieCardsLength[carouselID] = movieCards_03.length;
+                }else if(movieCardSetID=='04'){
+                    movieCards_04 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_04.length;
                 }
 
             
