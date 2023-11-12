@@ -156,6 +156,8 @@
         const csvFileURL_02 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/5thConcert_230819/videos.csv';
         const csvFileURL_03 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/LUMINOUS_230618/videos.csv';
         const csvFileURL_04 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/LUMINOUS_230617/videos.csv';
+        const csvFileURL_05 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230423/videos.csv';
+        const csvFileURL_06 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230422/videos.csv';
 
 
         let movieCards_00 = [];
@@ -163,6 +165,9 @@
         let movieCards_02 = [];
         let movieCards_03 = [];
         let movieCards_04 = [];
+        let movieCards_05 = [];
+        let movieCards_06 = [];
+
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
         updateCarousel(csvFileURL_00,'carousel_00', '00')
@@ -170,6 +175,8 @@
         updateCarousel(csvFileURL_02,'carousel_02', '02')
         updateCarousel(csvFileURL_03,'carousel_03', '03')
         updateCarousel(csvFileURL_04,'carousel_04', '04')
+        updateCarousel(csvFileURL_05,'carousel_05', '05')
+        updateCarousel(csvFileURL_06,'carousel_06', '06')
 
         // let currentIndex = 0;
         const currentIndex = {
@@ -177,7 +184,9 @@
             carousel_01: 0,
             carousel_02: 0,
             carousel_03: 0,
-            carousel_04: 0
+            carousel_04: 0,
+            carousel_05: 0,
+            carousel_06: 0
         };
 
         const movieCardsLength = {
@@ -185,7 +194,9 @@
             carousel_01: 0,
             carousel_02: 0,
             carousel_03: 0,
-            carousel_04: 0
+            carousel_04: 0,
+            carousel_05: 0,
+            carousel_06: 0
         };
 
         const cardWidth = 320; // Adjust to match card width
@@ -241,6 +252,12 @@
                 }else if(movieCardSetID=='04'){
                     movieCards_04 = document.querySelectorAll(`#${carouselID} .movie-card`);
                     movieCardsLength[carouselID] = movieCards_04.length;
+                }else if(movieCardSetID=='05'){
+                    movieCards_05 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_05.length;
+                }else if(movieCardSetID=='06'){
+                    movieCards_06 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_06.length;
                 }
 
             
