@@ -148,6 +148,14 @@
         <button class="prev-button"> &#9664;</button>
         <button class="next-button">&#9654;</button>
     </div>
+    <div class="carousel-container" id="carousel_09">
+        <h2 class="carousel-title">어썸뮤직페스티벌 230604</h2>
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
     <div class="carousel-container" id="carousel_05">
         <h2 class="carousel-title">INSERT COIN : parade 230423</h2>
         <div class="carousel" >
@@ -164,6 +172,22 @@
         <button class="prev-button"> &#9664;</button>
         <button class="next-button">&#9654;</button>
     </div>
+    <div class="carousel-container" id="carousel_07">
+        <h2 class="carousel-title">첫번째 단독콘서트 | FIRST LANDING 210619</h2>
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
+    <div class="carousel-container" id="carousel_08">
+        <h2 class="carousel-title">첫번째 단독콘서트 | FIRST LANDING 210618</h2>
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
     <script >
 
         // CSV 파일 URL
@@ -174,7 +198,9 @@
         const csvFileURL_04 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/LUMINOUS_230617/videos.csv';
         const csvFileURL_05 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230423/videos.csv';
         const csvFileURL_06 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230422/videos.csv';
-
+        const csvFileURL_07 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/FIRST-LANDING_210619/videos.csv';
+        const csvFileURL_08 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/FIRST-LANDING_210618/videos.csv';
+        const csvFileURL_09 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/AwsomeMusicFestival_230604/videos.csv';
 
         let movieCards_00 = [];
         let movieCards_01 = [];
@@ -183,6 +209,11 @@
         let movieCards_04 = [];
         let movieCards_05 = [];
         let movieCards_06 = [];
+        let movieCards_07 = [];
+        let movieCards_08 = [];
+        let movieCards_09 = [];
+
+        
 
 
         // CSV 데이터를 가져오고 파싱하여 테이블에 추가
@@ -193,7 +224,9 @@
         updateCarousel(csvFileURL_04,'carousel_04', '04')
         updateCarousel(csvFileURL_05,'carousel_05', '05')
         updateCarousel(csvFileURL_06,'carousel_06', '06')
-
+        updateCarousel(csvFileURL_07,'carousel_07', '07')
+        updateCarousel(csvFileURL_08,'carousel_08', '08')
+        updateCarousel(csvFileURL_09,'carousel_09', '09')
         // let currentIndex = 0;
         const currentIndex = {
             carousel_00: 0,
@@ -202,7 +235,10 @@
             carousel_03: 0,
             carousel_04: 0,
             carousel_05: 0,
-            carousel_06: 0
+            carousel_06: 0,
+            carousel_07: 0,
+            carousel_08: 0,
+            carousel_09: 0
         };
 
         const movieCardsLength = {
@@ -212,7 +248,10 @@
             carousel_03: 0,
             carousel_04: 0,
             carousel_05: 0,
-            carousel_06: 0
+            carousel_06: 0,
+            carousel_07: 0,
+            carousel_08: 0,
+            carousel_09: 0
         };
 
         const cardWidth = 320; // Adjust to match card width
@@ -274,7 +313,17 @@
                 }else if(movieCardSetID=='06'){
                     movieCards_06 = document.querySelectorAll(`#${carouselID} .movie-card`);
                     movieCardsLength[carouselID] = movieCards_06.length;
+                }else if(movieCardSetID=='07'){
+                    movieCards_07 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_07.length;
+                }else if(movieCardSetID=='08'){
+                    movieCards_08 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_08.length;
+                }else if(movieCardSetID=='09'){
+                    movieCards_09 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_09.length;
                 }
+
 
             
                 function showMovie(index) {
