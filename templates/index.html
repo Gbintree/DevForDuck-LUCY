@@ -11,6 +11,24 @@
         font-weight: normal;
         font-style: normal;
     }
+    .banner-container {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 50vh; /* 화면 전체 높이 */
+    }
+    /* 배너를 표시할 요소에 스타일을 적용합니다. */
+    .banner {
+        width: 50%; /* 배너의 너비 조정 */
+        height: 50%; /* 배너의 높이 조정 */
+        background-image: url('https://i.namu.wiki/i/xIRpHFZ4dSpZHH01V0aahluFSvOR_E9DGtj994j7hnNQaOb4cQnDC4bzoEaPQ32D56Y5AS4kXRxp7hF9bXXntQ.webp'); /* 로컬에 있는 이미지 경로 */
+        background-size: cover; /* 배경 이미지 크기를 요소에 맞게 조정 */
+        background-position: center;
+        opacity: 0.8;
+    /* 다른 스타일을 추가하여 배너 디자인을 변경할 수 있습니다. */
+    }
+
 
     body {
         margin: 0;
@@ -116,6 +134,9 @@
 
 </head>
 <body>
+    <div class="banner-container">
+        <div class="banner"></div>
+      </div>
     <div class="carousel-container" id="carousel_00">
         <h2 class="carousel-title">GMF2023 LUCY</h2>
         <div class="carousel" >
