@@ -19,6 +19,13 @@
         height: 50vh; /* 화면 전체 높이 */
     }
 
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+    }
+
 
 
     body {
@@ -174,12 +181,49 @@
             <h2>충분히 - 슈퍼밴드 오디션 영상(비하인드)</h2>
         </div>
         <div class="album-description">
-            <h2>슈퍼밴드 무패 준우승의 시작점</h2>
+            <h2>광일의 시작</h2>
             <p>"이렇게 또 소중한 영상 올려줘서 고마워 마지막이라고 생각하고 나온 오디션에서 보컬로 합격하고 프로그램 내내 베이스를 쳤지만 결국 루시의 드럼, 보컬 수식어를 가지기까지… 정말 수고 많았어 ෆ 지금까지 음악해줘서 너무너무 고맙고 루시 멤버들과 함께 음악을 하면 행복할 거 같아 지금까지 같이하고 있다한 광일이의 말이 영원하길 바라🤍 항상 응원할게"</p>
             <h4>- 댓글 by @Ronge6633
             </h4>
         </div>
-    </div>     
+    </div> 
+    <div class="album-section">
+        <div class="movie-card">
+            <a href="https://www.youtube.com/watch?v=ubiEGwDjOhk" target="_blank">
+                <img src="https://i.ytimg.com/vi/ubiEGwDjOhk/hqdefault.jpg" alt="왕따-데모">
+            </a>
+            <h2>왕따-데모</h2>
+        </div>
+        <div class="album-description">
+            <p>"왕따라는 주제로 노래를 만들었습니다. 
+                사실 외국에서 당한 인종차별에 대해 쓰고싶었지만 이러한 왕따에 대한 문제도 심각하다고 생각이되어 제가 외국에서 겪은 감정도 이와 비슷할거 같다는 생각에 만들어보았습니다."</p>
+            <h4>- Who Am I
+            </h4>    
+        </div>
+    </div>
+    <div class="album-section">
+        <div class="movie-card">
+            <a href="https://www.youtube.com/watch?v=rsHw9QZDExc" target="_blank">
+                <img src="https://i.ytimg.com/vi/rsHw9QZDExc/hqdefault.jpg" alt="if this is the end">
+            </a>   
+            <h2>if this is the end</h2>  
+        </div>
+        <div class="album-description">
+            <p>"자주볼수없는 보고싶은 부모님을 위해 
+                다들 한번 부모님생각하면서 들어도 좋을것같아요"</p>
+            <p>
+                I don't wanna cry, I'm bad at goodbye
+            </p>
+            <p>
+                울고싶지는 않아요, 작별인사는 잘 못하니까
+            
+            </p>
+            <h4>- Who Am I
+            </h4>
+        </div>
+    </div>
+
+    
     <div class="carousel-container" id="carousel_00">
         <h2 class="carousel-title"> 자작곡 _ 충분히</h2>
         <div class="carousel" >
@@ -213,15 +257,7 @@
         <button class="next-button">&#9654;</button>
     </div>
     <div class="carousel-container" id="carousel_04">
-        <h2 class="carousel-title">무대 직캠</h2>
-        <div class="carousel" >
-            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
-        </div>
-        <button class="prev-button"> &#9664;</button>
-        <button class="next-button">&#9654;</button>
-    </div>
-    <div class="carousel-container" id="carousel_09">
-        <h2 class="carousel-title"></h2>
+        <h2 class="carousel-title">자작곡 & 커버 모음</h2>
         <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
@@ -260,6 +296,7 @@
         <button class="prev-button"> &#9664;</button>
         <button class="next-button">&#9654;</button>
     </div>
+
     <script >
 
         // CSV 파일 URL
@@ -267,12 +304,12 @@
         const csvFileURL_01 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Song_DanceWithMe/videos.csv';
         const csvFileURL_02 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Cover_ChaoticSpring/videos.csv';
         const csvFileURL_03 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Song_Hug/videos.csv';
-        const csvFileURL_04 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Focus/videos.csv';
+        const csvFileURL_04 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Cover/videos.csv';
         // const csvFileURL_05 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230423/videos.csv';
         // const csvFileURL_06 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/INSERT-COIN-PARADE_230422/videos.csv';
         // const csvFileURL_07 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/FIRST-LANDING_210619/videos.csv';
         // const csvFileURL_08 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/FIRST-LANDING_210618/videos.csv';
-        // const csvFileURL_09 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/AwsomeMusicFestival_230604/videos.csv';
+        const csvFileURL_09 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/Light1/Focus/videos.csv';
 
         let movieCards_00 = [];
         let movieCards_01 = [];
