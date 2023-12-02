@@ -102,7 +102,7 @@ def get_videos_with_date_filter():
 def get_videos():
     search_keyword = input("Enter Search Keyword: ")
     folder_name = input("Enter Folder Name: ")
-    max_results = 30
+    max_results = input("Max Num: ")
 
     search_response = youtube.search().list(
         q=search_keyword,
