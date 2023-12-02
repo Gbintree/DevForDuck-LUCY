@@ -30,6 +30,37 @@
         font-family: 'RIDIBatang', sans-serif; /* 나눔고딕 폰트를 기본 폰트로 설정 */
     }
 
+    .album-section {
+        display: flex;
+        align-items: center;
+        margin-top: 50px; /* 앨범 섹션과 이전 요소 사이 간격 조절 */
+    }
+
+    .album-image {
+        margin-left: 80px;
+        flex: 0 0 30%; /* 앨범 이미지 영역이 전체의 50%를 차지하도록 설정 */
+    }
+
+    .album-image img {
+        width: 100%; /* 이미지가 부모 요소에 꽉 차도록 설정 */
+    }
+
+    .album-description {
+        flex: 0 0 50%; /* 앨범 소개글 영역이 전체의 50%를 차지하도록 설정 */
+        padding: 0 20px; /* 좌우 여백 추가 */
+    }
+
+    .album-description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+
+    .album-description p {
+    font-size: 16px;
+    line-height: 1.5;
+    }
+
+
     .carousel-container {
         width: 80%;
         margin: 0 auto;
@@ -128,9 +159,22 @@
 <body>
     <div class="banner-container">
         <h1>LIGHT ONE</h1>
-      </div>
+    </div>
+    <div class="carousel-container">
+        <h2 class="carousel-title"> 라이트원 전설의 시작 _ 충분히</h2>
+    </div>
+    
+    <div class="album-section">
+        <div class="album-image">
+          <img src="https://i.ytimg.com/vi/s07N2T0Zk4k/hqdefault.jpg" alt="앨범 이미지">
+        </div>
+        <div class="album-description">
+          <h2>앨범 소개</h2>
+          <p>간단한 앨범 소개글이나 설명을 이 부분에 작성합니다.</p>
+        </div>
+    </div>      
     <div class="carousel-container" id="carousel_00">
-        <h2 class="carousel-title"> 라이트원 레전드의 시작 _ 충분히</h2>
+
         <div class="carousel" >
             <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
         </div>
