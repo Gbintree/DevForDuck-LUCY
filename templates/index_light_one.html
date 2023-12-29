@@ -100,6 +100,8 @@
         overflow: hidden;
     }
 
+
+
     .movie-card img {
         max-width: 100%;
         height: auto;
@@ -178,10 +180,11 @@
     </div>
 
     <div class="album-section">
-        <h1>자작곡 & 커버</h1>
+        <h1>자작곡의 역사</h1>
     </div>
-    
-    
+    <div class="album-section">
+        <h2>충분히 </h2>
+    </div>
     <div class="album-section">
         <div class="movie-card">
             <a href="https://www.youtube.com/watch?v=SvjjI1GyztE" target="_blank">
@@ -190,19 +193,19 @@
             <h2>충분히 - 슈퍼밴드 오디션 영상(비하인드)</h2>
         </div>
         <div class="album-description">
-            <h2>충분히 - 슈퍼밴드 오디션 버젼</h2>
-            <p>"무패의 시작점" - ‘신’광일</p>
-            <div class="carousel-container" id="carousel_00">
-                <!-- <h3 class="carousel-title">충분히</h3> -->
-                <div class="carousel" >
-                    <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
-                </div>
-                <button class="prev-button"> &#9664;</button>
-                <button class="next-button">&#9654;</button>
-            </div> 
+            <p>"무패의 시작점"</p>
+
         </div>
         
     </div> 
+    <div class="carousel-container" id="carousel_00">
+        <!-- <h3 class="carousel-title">충분히</h3> -->
+        <div class="carousel" >
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>   
     <div class="album-section">
         <div class="movie-card">
             <a href="https://www.youtube.com/watch?v=F0droE16HhA" target="_blank">
@@ -296,7 +299,7 @@
             </p>
         </div>
     </div>
-    
+  
   
     <div class="carousel-container" id="carousel_01">
         <h3 class="carousel-title">Would U Dance With Me</h3>
@@ -551,6 +554,9 @@
 
                 if(movieCardSetID=='00'){
                     movieCards_00 = document.querySelectorAll(`#${carouselID} .movie-card`); 
+                    movieCards_00.forEach(card => {
+                        card.style.flex = "0 0 200px"; // 예시로 flex 값을 200px로 변경
+                    });
                     movieCardsLength[carouselID] = movieCards_00.length;
                 }else if(movieCardSetID=='01'){
                     movieCards_01 = document.querySelectorAll(`#${carouselID} .movie-card`); 
