@@ -42,6 +42,7 @@
 
     .album-section {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         margin-top: 50px; /* 앨범 섹션과 이전 요소 사이 간격 조절 */
         width: 80%;
@@ -65,13 +66,13 @@
     }
 
     .album-description h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
+        font-size: 24px;
+        margin-bottom: 10px;
     }
 
     .album-description p {
-    font-size: 16px;
-    line-height: 1.5;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
 
@@ -126,6 +127,7 @@
         z-index: 1; /* 썸네일 위에 표시하기 위한 z-index 설정 */
     }
 
+
     .movie-card h2 {
         display: none; /* 비디오 제목 숨기기 */
     }
@@ -176,7 +178,7 @@
     </div>
 
     <div class="album-section">
-        <h1>라이트원 _ 자작곡 & 커버</h1>
+        <h1>자작곡 & 커버</h1>
     </div>
     
     
@@ -190,8 +192,16 @@
         <div class="album-description">
             <h2>충분히 - 슈퍼밴드 오디션 버젼</h2>
             <p>"무패의 시작점" - ‘신’광일</p>
-            <p>"광이리 38kg시절 ..... 음색은 여전하네 넘 쭈아 ...♡" - 댓글 by @lloveubad</p>
+            <div class="carousel-container" id="carousel_00">
+                <!-- <h3 class="carousel-title">충분히</h3> -->
+                <div class="carousel" >
+                    <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+                </div>
+                <button class="prev-button"> &#9664;</button>
+                <button class="next-button">&#9654;</button>
+            </div> 
         </div>
+        
     </div> 
     <div class="album-section">
         <div class="movie-card">
@@ -202,12 +212,8 @@
             </h2>  
         </div>
         <div class="album-description">
-            <h2>Solo Christmas (자작곡)</h2>
-            <p>
-                "슈퍼밴드에서 성공하고 루시멤버가 되고 그렇게 큰 무대에서 사랑해주는 팬들과 이 노래를 부를지 누가알았겠어..😊"
-            </p>
-            <h4> - 댓글 by @user-il1fd3bm1m
-            </h4>
+            <h2>Who am I - Solo Christmas
+            </h2>  
         </div>
     </div>
     <div class="album-section">
@@ -222,8 +228,6 @@
             <p>
                 "바쁜 일상생활 짧은 영상으로 위로가 되어주고 싶어요"
             </p>
-            <h4>- Who Am I
-            </h4>
         </div>
     </div>
     <div class="album-section">
@@ -244,8 +248,6 @@
                 울고싶지는 않아요, 작별인사는 잘 못하니까
             
             </p>
-            <h4>- Who Am I
-            </h4>
         </div>
     </div>
     <div class="album-section">
@@ -257,12 +259,7 @@
         </div>
         <div class="album-description">
             <h2>I Wish You Love   (Cover)</h2>
-            <p>
-                "저는 언제쯤이면 1일 3광일아위슐럽을 끝낼 수 있을까요..""
-            </p>
-            <h4>
-                - 댓글 by @user-ws3po7zc7w
-            </h4>
+
         </div>
     </div>
     <div class="album-section">
@@ -280,8 +277,6 @@
             <p>
                 이제 우릴 비워야할 때가 온거야
             </p>
-            <h4>- Who Am I
-            </h4>
         </div>
     </div>
     <div class="album-section">
@@ -292,41 +287,17 @@
             <h2>Who am I - 어제보다 더(More than yesterday) </h2>  
         </div>
         <div class="album-description">
-            <h2>More than yesterday (자작곡)</h2>
+            <h2>More than yesterday</h2>
             <p>
                 어제보다 더 나은 사람이 되고 싶었던 거였어
             </p>
             <p>
                 그때보다 더 아낌없이 주는 내가 되고 싶어서
             </p>
-            <h4>- Who Am I
-            </h4>
-        </div>
-    </div>
-    <div class="album-section">
-        <div class="movie-card">
-            <a href="https://www.youtube.com/watch?v=ubiEGwDjOhk" target="_blank">
-                <img src="https://i.ytimg.com/vi/ubiEGwDjOhk/hqdefault.jpg" alt="왕따-데모">
-            </a>
-            <h2>왕따-데모</h2>
-        </div>
-        <div class="album-description">
-            <h2>왕따 (자작곡)</h2>
-            <p>"왕따라는 주제로 노래를 만들었습니다. 
-                사실 외국에서 당한 인종차별에 대해 쓰고싶었지만 이러한 왕따에 대한 문제도 심각하다고 생각이되어 제가 외국에서 겪은 감정도 이와 비슷할거 같다는 생각에 만들어보았습니다."</p>
-            <h4>- Who Am I
-            </h4>    
         </div>
     </div>
     
-    <div class="carousel-container" id="carousel_00">
-        <h3 class="carousel-title">충분히</h3>
-        <div class="carousel" >
-            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
-        </div>
-        <button class="prev-button"> &#9664;</button>
-        <button class="next-button">&#9654;</button>
-    </div>
+  
     <div class="carousel-container" id="carousel_01">
         <h3 class="carousel-title">Would U Dance With Me</h3>
         <div class="carousel">
