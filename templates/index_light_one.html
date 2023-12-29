@@ -101,7 +101,6 @@
     }
 
 
-
     .movie-card img {
         max-width: 100%;
         height: auto;
@@ -129,6 +128,38 @@
         z-index: 1; /* 썸네일 위에 표시하기 위한 z-index 설정 */
     }
 
+        /* 기존 클래스 유지, 사이즈만 작게 조절하는 클래스 추가 */
+    .small-movie-card {
+        /* 기존 클래스에서 상속 받은 속성들 */
+        position: relative;
+        margin-right: 10px; /* 크기가 작아졌으니 간격도 조금 줄여줍니다 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        flex: 0 0 200px; /* 사이즈를 작게 조절 */
+        border-radius: 3px; /* 각도 조절 */
+    }
+
+    /* 이미지 크기 조절 */
+    .small-movie-card img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* h2 크기 조절 */
+    .small-movie-card h2 {
+        /* 기존 클래스에서 상속 받은 속성들 */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 8px; /* 패딩 사이즈 조절 */
+        font-size: 14px; /* 폰트 크기 조절 */
+        margin: 0;
+        display: none;
+        z-index: 1;
+    }
+
 
     .movie-card h2 {
         display: none; /* 비디오 제목 숨기기 */
@@ -136,6 +167,15 @@
 
     /* 마우스 호버 시 비디오 제목 표시 */
     .movie-card:hover h2 {
+        display: block;
+    }
+
+    .small-movie-card h2 {
+        display: none; /* 비디오 제목 숨기기 */
+    }
+
+    /* 마우스 호버 시 비디오 제목 표시 */
+    .small-movie-card:hover h2 {
         display: block;
     }
 
@@ -206,6 +246,11 @@
         <button class="prev-button"> &#9664;</button>
         <button class="next-button">&#9654;</button>
     </div>   
+
+    <div class="album-section">
+        <h2>Who am I - Solo Christmas
+        </h2>  
+    </div>
     <div class="album-section">
         <div class="movie-card">
             <a href="https://www.youtube.com/watch?v=F0droE16HhA" target="_blank">
@@ -213,11 +258,15 @@
             </a>   
             <h2>Who am I - Solo Christmas
             </h2>  
-        </div>
-        <div class="album-description">
+        </div>   
+        <div class="small-movie-card">
+            <a href="https://www.youtube.com/watch?v=F0droE16HhA" target="_blank">
+                <img src="https://i.ytimg.com/vi/F0droE16HhA/hqdefault.jpg" alt="Solo Christmas ">
+            </a>   
             <h2>Who am I - Solo Christmas
             </h2>  
-        </div>
+        </div>    
+        
     </div>
     <div class="album-section">
         <div class="movie-card">
