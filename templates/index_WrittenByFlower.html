@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1st World Tour : Written by Flower</title>
+    <style>
+    @font-face {
+        font-family: 'RIDIBatang';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+    .banner-container {
+        width: 100%;
+        display: flex;
+        justify-content: center; /* 가로 중앙 정렬 */
+        align-items: center; /* 수직 중앙 정렬 */
+        height: 50vh; /* 화면 전체 높이 */
+    }
+
+    .grid-container {
+        /* width: 80%; */
+        display: flex;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        justify-content: center;
+    }
+
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #000;
+        color: #fff;
+        font-family: 'RIDIBatang', sans-serif; /* 나눔고딕 폰트를 기본 폰트로 설정 */
+    }
+
+    .album-section {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-top: 50px; /* 앨범 섹션과 이전 요소 사이 간격 조절 */
+        width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .album-image {
+        /* margin-left: 80px; */
+        flex: 0 0 30%; /* 앨범 이미지 영역이 전체의 50%를 차지하도록 설정 */
+    }
+
+    .album-image img {
+        width: 100%; /* 이미지가 부모 요소에 꽉 차도록 설정 */
+    }
+
+    .album-description {
+        flex: 0 0 50%; /* 앨범 소개글 영역이 전체의 50%를 차지하도록 설정 */
+        padding: 0 20px; /* 좌우 여백 추가 */
+    }
+
+    .album-description h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .album-description p {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+
+    .carousel-container {
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 2%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .carousel {
+        display: flex;
+        transition: transform 0.3s ease;
+    }
+
+    .movie-card {
+        position: relative;
+        flex: 0 0 300px;
+        margin-right: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #333;
+        text-align: center;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+
+
+    .movie-card img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .movie-card h2 {
+        /* padding: 10px;
+        text-align: center;
+        margin: 0;
+        background-color: #222;
+        color: #fff;
+        font-size: 16px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px; */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 10px;
+        font-size: 16px;
+        margin: 0;
+        display: none;
+        z-index: 1; /* 썸네일 위에 표시하기 위한 z-index 설정 */
+    }
+
+        /* 기존 클래스 유지, 사이즈만 작게 조절하는 클래스 추가 */
+    .small-movie-card {
+        /* 기존 클래스에서 상속 받은 속성들 */
+        position: relative;
+        margin-right: 10px; /* 크기가 작아졌으니 간격도 조금 줄여줍니다 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        flex: 0 0 200px; /* 사이즈를 작게 조절 */
+        border-radius: 3px; /* 각도 조절 */
+    }
+
+    /* 이미지 크기 조절 */
+    .small-movie-card img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    /* h2 크기 조절 */
+    .small-movie-card h2 {
+        /* 기존 클래스에서 상속 받은 속성들 */
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        padding: 8px; /* 패딩 사이즈 조절 */
+        font-size: 14px; /* 폰트 크기 조절 */
+        margin: 0;
+        display: none;
+        z-index: 1;
+    }
+
+
+    .movie-card h2 {
+        display: none; /* 비디오 제목 숨기기 */
+    }
+
+    /* 마우스 호버 시 비디오 제목 표시 */
+    .movie-card:hover h2 {
+        display: block;
+    }
+
+    .small-movie-card h2 {
+        display: none; /* 비디오 제목 숨기기 */
+    }
+
+    /* 마우스 호버 시 비디오 제목 표시 */
+    .small-movie-card:hover h2 {
+        display: block;
+    }
+
+    .prev-button,
+    .next-button {
+        position: absolute;
+        /* top: 50%; */
+        bottom: 0px;
+        /* transform: translateY(-50%); */
+        background-color: transparent;
+        color: #fff;
+        padding: 10px 15px;
+        border: 2px solid #ffffff00;
+        cursor: pointer;
+        border-radius: 55px;
+        transition: background-color 0.3s, color 0.3s;
+        height: 80%;
+        width: 10px
+    }
+
+    .prev-button:hover,
+    .next-button:hover {
+        background-color: #ffffff6c;
+        color: #000;
+    }
+
+
+    .prev-button {
+        left: 0;
+    }
+
+    .next-button {
+        right: 0;
+    }
+
+    </style>    
+
+</head>
+<body>
+    <div class="carousel-container" id="carousel_00">
+        <h3 class="carousel-title">1st Day</h3>
+        <div class="carousel">
+            <!-- 동적으로 생성될 캐러셀 카드가 여기에 추가됩니다 -->
+        </div>
+        <button class="prev-button"> &#9664;</button>
+        <button class="next-button">&#9654;</button>
+    </div>
+
+    <script >
+        const csvFileURL_00 = 'https://raw.githubusercontent.com/Gbintree/DevForDuck-LUCY/main/Resources/1stWorldTour/videos.csv';
+    
+        let movieCards_00 = [];
+
+        updateCarousel(csvFileURL_00,'carousel_00', '00')
+
+        const currentIndex = {
+            carousel_00: 0,
+            carousel_01: 0,
+            carousel_02: 0,
+            carousel_03: 0,
+            carousel_04: 0,
+            carousel_05: 0,
+            carousel_06: 0,
+            carousel_07: 0,
+            carousel_08: 0,
+            carousel_09: 0
+        };
+
+        const movieCardsLength = {
+            carousel_00: 0,
+            carousel_01: 0,
+            carousel_02: 0,
+            carousel_03: 0,
+            carousel_04: 0,
+            carousel_05: 0,
+            carousel_06: 0,
+            carousel_07: 0,
+            carousel_08: 0,
+            carousel_09: 0
+        };
+
+        const cardWidth = 320;
+
+        function updateCarousel(csv_path, carouselID, movieCardSetID){
+            fetch(csv_path)
+            .then(response => response.text())
+            .then(data => {
+                const carousel = document.querySelector(`#${carouselID} .carousel`);//document.getElementById(carouselID);
+                const lines = data.split('\n');
+                
+                for (let i = 1; i < lines.length; i++) {
+                    const cells = lines[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/); // 쉼표 안의 쌍따옴표는 무시 //split(',');
+                    if (cells.length === 4) {
+                        const [video_id,title, url, thumbnail] = cells;
+                    
+                        // 동적으로 캐러셀 카드 생성
+                        const movieCard = document.createElement('div');
+                        movieCard.classList.add('movie-card');
+
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.target = '_blank';
+
+                        const img = document.createElement('img');
+                        img.src = thumbnail;
+                        img.alt = title;
+
+                        const h2 = document.createElement('h2');
+                        h2.textContent = title;
+
+                        link.appendChild(img);
+                        movieCard.appendChild(link);
+                        movieCard.appendChild(h2);
+                        
+                        carousel.appendChild(movieCard);
+                    }
+                }
+
+                if(movieCardSetID=='00'){
+                    movieCards_00 = document.querySelectorAll(`#${carouselID} .movie-card`); 
+                    movieCards_00.forEach(card => {
+                        card.style.flex = "0 0 200px"; // 예시로 flex 값을 200px로 변경
+                    });
+                    movieCardsLength[carouselID] = movieCards_00.length;
+                }else if(movieCardSetID=='01'){
+                    movieCards_01 = document.querySelectorAll(`#${carouselID} .movie-card`); 
+                    movieCardsLength[carouselID] = movieCards_01.length;
+                }else if(movieCardSetID=='02'){
+                    movieCards_02 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_02.length;
+                }
+                else if(movieCardSetID=='03'){
+                    movieCards_03 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_03.length;
+                }else if(movieCardSetID=='04'){
+                    movieCards_04 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_04.length;
+                }else if(movieCardSetID=='05'){
+                    movieCards_05 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_05.length;
+                }else if(movieCardSetID=='06'){
+                    movieCards_06 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_06.length;
+                }else if(movieCardSetID=='07'){
+                    movieCards_07 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_07.length;
+                }else if(movieCardSetID=='08'){
+                    movieCards_08 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_08.length;
+                }else if(movieCardSetID=='09'){
+                    movieCards_09 = document.querySelectorAll(`#${carouselID} .movie-card`);
+                    movieCardsLength[carouselID] = movieCards_09.length;
+                }
+
+
+            
+                function showMovie(index) {
+                    const offset = -index * cardWidth;
+                    carousel.style.transform = `translateX(${offset}px)`;
+                }
+ 
+                function nextMovie() {
+                    currentIndex[carouselID] = (currentIndex[carouselID] + 1) % movieCardsLength[carouselID];
+                    showMovie(currentIndex[carouselID]);
+                    console.log(currentIndex[carouselID]);
+                }
+
+                function prevMovie() {
+                    currentIndex[carouselID] = (currentIndex[carouselID] - 1 + movieCardsLength[carouselID]) % movieCardsLength[carouselID];
+                    showMovie(currentIndex[carouselID]);
+                    console.log(currentIndex[carouselID]);
+                }
+
+                // Add event listeners for next and previous buttons specific to this carousel
+                const prevButton = document.querySelector(`#${carouselID} .prev-button`);
+                const nextButton = document.querySelector(`#${carouselID} .next-button`);
+                nextButton.addEventListener('click', nextMovie);
+                prevButton.addEventListener('click', prevMovie);
+
+                showMovie(currentIndex[carouselID]);
+                
+            })
+            .catch(error => console.error('Error fetching CSV:', error));
+
+            
+        }
+    </script>
+</body>
+</html>
